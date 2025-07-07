@@ -112,7 +112,7 @@ async function getRemoteDataCollectionOptIn(
 ): Promise<boolean> {
   try {
     const resp = await server.getCodeAssistGlobalUserSetting();
-    return resp.freeTierDataCollectionOptin;
+    return resp.freeTierDataCollectionOptIn;
   } catch (e) {
     if (e instanceof GaxiosError) {
       if (e.response?.status === 404) {
@@ -129,7 +129,7 @@ async function setRemoteDataCollectionOptIn(
 ): Promise<boolean> {
   const resp = await server.setCodeAssistGlobalUserSetting({
     cloudaicompanionProject: server.projectId,
-    freeTierDataCollectionOptin: optIn,
+    freeTierDataCollectionOptIn: optIn,
   });
-  return resp.freeTierDataCollectionOptin;
+  return resp.freeTierDataCollectionOptIn;
 }

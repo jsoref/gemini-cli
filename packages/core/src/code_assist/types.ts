@@ -176,10 +176,10 @@ export interface HelpLinkUrl {
 
 export interface SetCodeAssistGlobalUserSettingRequest {
   cloudaicompanionProject?: string;
-  freeTierDataCollectionOptin: boolean;
+  freeTierDataCollectionOptIn: boolean;
 }
 
 export interface CodeAssistGlobalUserSettingResponse {
   cloudaicompanionProject?: string;
-  freeTierDataCollectionOptin: boolean;
+  freeTierDataCollectionOptIn: boolean;
 }
