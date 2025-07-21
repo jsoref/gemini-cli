@@ -8,7 +8,22 @@ on:
   merge_group:
 
 jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      available: ${{ steps.has.outputs.secrets }}
+    steps:
+      - name: has secrets
+        run: echo 'secrets=1' >> "$GITHUB_OUTPUT"
+        id: has
+        if: ${{ env.GEMINI_API_KEY }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY && '1' || '' }}
+
   e2e-test:
+    needs:
+    - secrets
+    if: ${{ needs.secrets.outputs.available }}
     name: E2E Test - ${{ matrix.sandbox }}
     runs-on: ubuntu-latest
     strategy:
